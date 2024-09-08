@@ -25,7 +25,11 @@ struct SearchView: View {
             ScrollView {
                 LazyVStack(spacing: 20) {
                     ForEach($searchList, id: \.id) { item in
-                        searchCell(item)
+                        NavigationLink {
+                            ChartView(id: item.id.wrappedValue)
+                        } label: {
+                            searchCell(item)
+                        }
                     }
                 }
                 .padding()
@@ -56,7 +60,7 @@ struct SearchView: View {
         HStack {
             CircleImageView(url: item.thumb.wrappedValue)
             VStack(alignment: .leading) {
-                Text(item.name.wrappedValue)
+                Text(item.name.wrappedValue, highlight: text, color: .purple)
                     .bold()
                 Text(item.symbol.wrappedValue)
                     .foregroundStyle(.gray)

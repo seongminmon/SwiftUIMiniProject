@@ -18,7 +18,11 @@ struct FavoriteView: View {
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(marketList, id: \.id) { item in
-                        favoriteCell(item)
+                        NavigationLink {
+                            ChartView(id: item.id)
+                        } label: {
+                            favoriteCell(item)
+                        }
                     }
                 }
                 .padding()

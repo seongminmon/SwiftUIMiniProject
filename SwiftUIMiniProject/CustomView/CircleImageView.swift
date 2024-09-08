@@ -18,6 +18,8 @@ struct CircleImageView: View {
                 ProgressView()
             case .success(let image):
                 image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             case .failure(_):
                 Image(systemName: "star")
             @unknown default:

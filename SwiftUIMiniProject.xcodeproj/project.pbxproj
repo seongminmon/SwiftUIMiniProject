@@ -30,6 +30,9 @@
 		241A58462C8D604600232D8B /* LikedCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58452C8D604600232D8B /* LikedCoin.swift */; };
 		241A58482C8D628700232D8B /* Coin+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58472C8D628700232D8B /* Coin+.swift */; };
 		241A584B2C8D844E00232D8B /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A584A2C8D844E00232D8B /* CircleImageView.swift */; };
+		241A584D2C8DD77100232D8B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A584C2C8DD77100232D8B /* String+.swift */; };
+		241A584F2C8DDC9900232D8B /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A584E2C8DDC9900232D8B /* Text+.swift */; };
+		241A58522C8DDD6700232D8B /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58512C8DDD6700232D8B /* Formatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +71,9 @@
 		241A58452C8D604600232D8B /* LikedCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCoin.swift; sourceTree = "<group>"; };
 		241A58472C8D628700232D8B /* Coin+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+.swift"; sourceTree = "<group>"; };
 		241A584A2C8D844E00232D8B /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		241A584C2C8DD77100232D8B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		241A584E2C8DDC9900232D8B /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
+		241A58512C8DDD6700232D8B /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 			children = (
 				241A58212C8C80BE00232D8B /* APIKey.swift */,
 				241A58112C8C808B00232D8B /* SwiftUIMiniProjectApp.swift */,
+				241A58502C8DDD5D00232D8B /* Enum */,
 				241A58422C8D5FC700232D8B /* Extension */,
 				241A583F2C8D5F9800232D8B /* Realm */,
 				241A58362C8D58FC00232D8B /* Network */,
@@ -161,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				241A58432C8D5FD000232D8B /* View+.swift */,
+				241A584E2C8DDC9900232D8B /* Text+.swift */,
+				241A584C2C8DD77100232D8B /* String+.swift */,
 				241A58472C8D628700232D8B /* Coin+.swift */,
 			);
 			path = Extension;
@@ -172,6 +181,14 @@
 				241A584A2C8D844E00232D8B /* CircleImageView.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		241A58502C8DDD5D00232D8B /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				241A58512C8DDD6700232D8B /* Formatter.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				241A582C2C8C829C00232D8B /* ProfileView.swift in Sources */,
+				241A584F2C8DDC9900232D8B /* Text+.swift in Sources */,
+				241A58522C8DDD6700232D8B /* Formatter.swift in Sources */,
 				241A58332C8C9A5000232D8B /* Market.swift in Sources */,
 				241A58262C8C818700232D8B /* SearchView.swift in Sources */,
 				241A58142C8C808B00232D8B /* ContentView.swift in Sources */,
@@ -264,6 +283,7 @@
 				241A582A2C8C81A600232D8B /* ChartView.swift in Sources */,
 				241A58122C8C808B00232D8B /* SwiftUIMiniProjectApp.swift in Sources */,
 				241A58412C8D5FA700232D8B /* RealmRepository.swift in Sources */,
+				241A584D2C8DD77100232D8B /* String+.swift in Sources */,
 				241A58482C8D628700232D8B /* Coin+.swift in Sources */,
 				241A58312C8C992A00232D8B /* Search.swift in Sources */,
 				241A58282C8C819F00232D8B /* FavoriteView.swift in Sources */,

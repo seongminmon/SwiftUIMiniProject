@@ -12,21 +12,28 @@ struct ContentView: View {
     var body: some View {
         TabView {
             TrendingView()
-            .tabItem {
-              Image(systemName: "chart.xyaxis.line")
-            }
+                .foregroundStyle(.black)
+                .tabItem {
+                    Image(systemName: "chart.xyaxis.line")
+                }
+            
             SearchView()
-            .tabItem {
-              Image(systemName: "magnifyingglass")
-            }
+                .foregroundStyle(.black)
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                }
+            
             FavoriteView()
-            .tabItem {
-              Image(systemName: "creditcard")
-            }
+                .foregroundStyle(.black)
+                .tabItem {
+                    Image(systemName: "creditcard")
+                }
+            
             ProfileView()
-            .tabItem {
-              Image(systemName: "person")
-            }
+                .foregroundStyle(.black)
+                .tabItem {
+                    Image(systemName: "person")
+                }
         }
         .accentColor(.purple)
     }

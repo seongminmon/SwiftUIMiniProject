@@ -44,6 +44,22 @@ struct Market: Decodable {
         let formatted = String(format: "%.2f", priceChangePercentage24H)
         return "\(formatted)%"
     }
+    
+    var low24HFormatted: String {
+        return "₩\(low24H.formatted())"
+    }
+    
+    var high24HFormatted: String {
+        return "₩\(high24H.formatted())"
+    }
+    
+    var athFormatted: String {
+        return "₩\(ath.formatted())"
+    }
+    
+    var atlFormatted: String {
+        return "₩\(atl.formatted())"
+    }
 }
 
 struct SparklineIn7D: Decodable {

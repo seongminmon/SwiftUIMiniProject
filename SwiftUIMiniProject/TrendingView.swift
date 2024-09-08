@@ -114,7 +114,11 @@ struct TrendingView: View {
             ScrollView(.horizontal) {
                 LazyHStack {
                     ForEach(marketList, id: \.id) { item in
-                        favoriteCell(item)
+                        NavigationLink {
+                            ChartView(id: item.id)
+                        } label: {
+                            favoriteCell(item)
+                        }
                     }
                 }
             }
@@ -128,7 +132,7 @@ struct TrendingView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(.gray.opacity(0.2))
-                .frame(width: 250, height: 150)
+                .frame(width: 250, height: 200)
             
             VStack {
                 HStack {
@@ -171,7 +175,11 @@ struct TrendingView: View {
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows) {
                     ForEach(Array(zip(coinList.indices, coinList)), id: \.0) { index, item in
-                        coinCell(index, item)
+                        NavigationLink {
+                            ChartView(id: item.id)
+                        } label: {
+                            coinCell(index, item)
+                        }
                     }
                 }
             }
