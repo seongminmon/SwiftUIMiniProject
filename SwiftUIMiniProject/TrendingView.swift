@@ -23,14 +23,5 @@ struct TrendingView: View {
             }
             .navigationTitle("Crypto Coin")
         }
-        .task {
-            print("통신 시작")
-            CoingeckoAPIManager.shared.fetchMarket(
-                ["bitcoin", "wrapped-bitcoin"],
-                sparkLine: false
-            ) { result in
-                dump(result)
-            }
-        }
     }
 }

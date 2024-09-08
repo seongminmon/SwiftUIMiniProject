@@ -23,7 +23,27 @@
 		241A58332C8C9A5000232D8B /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58322C8C9A5000232D8B /* Market.swift */; };
 		241A58352C8D58A900232D8B /* CoingeckoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58342C8D58A900232D8B /* CoingeckoAPIManager.swift */; };
 		241A58392C8D5A6200232D8B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 241A58382C8D5A6200232D8B /* Kingfisher */; };
+		241A583C2C8D5F3300232D8B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 241A583B2C8D5F3300232D8B /* RealmSwift */; };
+		241A583D2C8D5F4800232D8B /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 241A583B2C8D5F3300232D8B /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		241A58412C8D5FA700232D8B /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58402C8D5FA700232D8B /* RealmRepository.swift */; };
+		241A58442C8D5FD000232D8B /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58432C8D5FD000232D8B /* View+.swift */; };
+		241A58462C8D604600232D8B /* LikedCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58452C8D604600232D8B /* LikedCoin.swift */; };
+		241A58482C8D628700232D8B /* Coin+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58472C8D628700232D8B /* Coin+.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		241A583E2C8D5F4800232D8B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				241A583D2C8D5F4800232D8B /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		241A580E2C8C808B00232D8B /* SwiftUIMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +62,10 @@
 		241A58302C8C992A00232D8B /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		241A58322C8C9A5000232D8B /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		241A58342C8D58A900232D8B /* CoingeckoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoingeckoAPIManager.swift; sourceTree = "<group>"; };
+		241A58402C8D5FA700232D8B /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		241A58432C8D5FD000232D8B /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		241A58452C8D604600232D8B /* LikedCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCoin.swift; sourceTree = "<group>"; };
+		241A58472C8D628700232D8B /* Coin+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				241A583C2C8D5F3300232D8B /* RealmSwift in Frameworks */,
 				241A58392C8D5A6200232D8B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,9 +102,11 @@
 			isa = PBXGroup;
 			children = (
 				241A58212C8C80BE00232D8B /* APIKey.swift */,
+				241A58112C8C808B00232D8B /* SwiftUIMiniProjectApp.swift */,
+				241A58422C8D5FC700232D8B /* Extension */,
+				241A583F2C8D5F9800232D8B /* Realm */,
 				241A58362C8D58FC00232D8B /* Network */,
 				241A582F2C8C992400232D8B /* Model */,
-				241A58112C8C808B00232D8B /* SwiftUIMiniProjectApp.swift */,
 				241A58132C8C808B00232D8B /* ContentView.swift */,
 				241A58232C8C816D00232D8B /* TrendingView.swift */,
 				241A58252C8C818700232D8B /* SearchView.swift */,
@@ -118,6 +145,24 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		241A583F2C8D5F9800232D8B /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				241A58402C8D5FA700232D8B /* RealmRepository.swift */,
+				241A58452C8D604600232D8B /* LikedCoin.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		241A58422C8D5FC700232D8B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				241A58432C8D5FD000232D8B /* View+.swift */,
+				241A58472C8D628700232D8B /* Coin+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,6 +173,7 @@
 				241A580A2C8C808B00232D8B /* Sources */,
 				241A580B2C8C808B00232D8B /* Frameworks */,
 				241A580C2C8C808B00232D8B /* Resources */,
+				241A583E2C8D5F4800232D8B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,6 +182,7 @@
 			name = SwiftUIMiniProject;
 			packageProductDependencies = (
 				241A58382C8D5A6200232D8B /* Kingfisher */,
+				241A583B2C8D5F3300232D8B /* RealmSwift */,
 			);
 			productName = SwiftUIMiniProject;
 			productReference = 241A580E2C8C808B00232D8B /* SwiftUIMiniProject.app */;
@@ -167,6 +214,7 @@
 			mainGroup = 241A58052C8C808B00232D8B;
 			packageReferences = (
 				241A58372C8D5A6200232D8B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				241A583A2C8D5F3300232D8B /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 241A580F2C8C808B00232D8B /* Products */;
 			projectDirPath = "";
@@ -199,13 +247,17 @@
 				241A58332C8C9A5000232D8B /* Market.swift in Sources */,
 				241A58262C8C818700232D8B /* SearchView.swift in Sources */,
 				241A58142C8C808B00232D8B /* ContentView.swift in Sources */,
+				241A58442C8D5FD000232D8B /* View+.swift in Sources */,
 				241A582E2C8C875700232D8B /* Trending.swift in Sources */,
 				241A58222C8C80BE00232D8B /* APIKey.swift in Sources */,
 				241A582A2C8C81A600232D8B /* ChartView.swift in Sources */,
 				241A58122C8C808B00232D8B /* SwiftUIMiniProjectApp.swift in Sources */,
+				241A58412C8D5FA700232D8B /* RealmRepository.swift in Sources */,
+				241A58482C8D628700232D8B /* Coin+.swift in Sources */,
 				241A58312C8C992A00232D8B /* Search.swift in Sources */,
 				241A58282C8C819F00232D8B /* FavoriteView.swift in Sources */,
 				241A58242C8C816D00232D8B /* TrendingView.swift in Sources */,
+				241A58462C8D604600232D8B /* LikedCoin.swift in Sources */,
 				241A58352C8D58A900232D8B /* CoingeckoAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +484,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		241A583A2C8D5F3300232D8B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.52.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -439,6 +499,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 241A58372C8D5A6200232D8B /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		241A583B2C8D5F3300232D8B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 241A583A2C8D5F3300232D8B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
