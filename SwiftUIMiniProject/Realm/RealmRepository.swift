@@ -9,11 +9,24 @@ import Foundation
 import RealmSwift
 
 final class RealmRepository {
-    
     static let shared = RealmRepository()
-    private init() {}
+    private var realm: Realm
     
-    private let realm = try! Realm()
+    private init() {
+        do {
+            realm = try Realm()
+        } catch let error as NSError {
+            fatalError("Realm 초기화 실패: \(error.localizedDescription)")
+        }
+    }
+    
+    func makeNewRealm() {
+        do {
+            realm = try Realm()
+        } catch let error as NSError {
+            fatalError("Realm 초기화 실패: \(error.localizedDescription)")
+        }
+    }
     
     var fileURL: URL? {
         return realm.configuration.fileURL
@@ -26,6 +39,7 @@ final class RealmRepository {
     
     // MARK: - Create
     func addItem(_ item: LikedCoin) {
+        makeNewRealm()
         do {
             try realm.write {
                 realm.add(item)
@@ -38,12 +52,14 @@ final class RealmRepository {
     
     // MARK: - Read
     func fetchAll() -> [LikedCoin] {
+        makeNewRealm()
         let value = realm.objects(LikedCoin.self)
             .sorted(byKeyPath: "date", ascending: false) // 최신순
         return Array(value)
     }
     
     func fetchItem(_ id: String) -> LikedCoin? {
+        makeNewRealm()
         return realm.object(ofType: LikedCoin.self, forPrimaryKey: id)
     }
     
@@ -54,6 +70,7 @@ final class RealmRepository {
     
     // MARK: - Delete
     func deleteItem(_ id: String) {
+        makeNewRealm()
         if let item = fetchItem(id) {
             do {
                 try realm.write {
@@ -67,6 +84,7 @@ final class RealmRepository {
     }
     
     func deleteAll() {
+        makeNewRealm()
         do {
             try realm.write {
                 let photos = realm.objects(LikedCoin.self)

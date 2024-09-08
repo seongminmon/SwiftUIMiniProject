@@ -93,7 +93,6 @@ struct TrendingView: View {
                         priceChange: Double($0.data.floorPriceInUsd24HPercentageChange)
                     )
                 }
-                dump(nftList)
             }
         }
     }
@@ -176,21 +175,7 @@ struct TrendingView: View {
                 Text("\(index + 1)")
                     .font(.title2)
                     .bold()
-                AsyncImage(url: URL(string: item.small ?? "")) { data in
-                    switch data {
-                    case .empty:
-                        ProgressView()
-                    case .success(let image):
-                        image
-                    case .failure(_):
-                        Image(systemName: "star")
-                    @unknown default:
-                        Image(systemName: "star")
-                    }
-                }
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-                
+                CircleImageView(url: item.small)
                 VStack(alignment: .leading) {
                     Text(item.name)
                         .bold()
@@ -245,20 +230,7 @@ struct TrendingView: View {
                 Text("\(index + 1)")
                     .font(.title2)
                     .bold()
-                AsyncImage(url: URL(string: item.thumb ?? "")) { data in
-                    switch data {
-                    case .empty:
-                        ProgressView()
-                    case .success(let image):
-                        image
-                    case .failure(_):
-                        Image(systemName: "star")
-                    @unknown default:
-                        Image(systemName: "star")
-                    }
-                }
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
+                CircleImageView(url: item.thumb)
                 VStack(alignment: .leading) {
                     Text(item.name)
                         .bold()

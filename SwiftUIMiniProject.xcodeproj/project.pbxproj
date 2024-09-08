@@ -29,6 +29,7 @@
 		241A58442C8D5FD000232D8B /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58432C8D5FD000232D8B /* View+.swift */; };
 		241A58462C8D604600232D8B /* LikedCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58452C8D604600232D8B /* LikedCoin.swift */; };
 		241A58482C8D628700232D8B /* Coin+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58472C8D628700232D8B /* Coin+.swift */; };
+		241A584B2C8D844E00232D8B /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A584A2C8D844E00232D8B /* CircleImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +67,7 @@
 		241A58432C8D5FD000232D8B /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		241A58452C8D604600232D8B /* LikedCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCoin.swift; sourceTree = "<group>"; };
 		241A58472C8D628700232D8B /* Coin+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+.swift"; sourceTree = "<group>"; };
+		241A584A2C8D844E00232D8B /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				241A58362C8D58FC00232D8B /* Network */,
 				241A582F2C8C992400232D8B /* Model */,
 				241A58132C8C808B00232D8B /* ContentView.swift */,
+				241A58492C8D844600232D8B /* CustomView */,
 				241A58232C8C816D00232D8B /* TrendingView.swift */,
 				241A58252C8C818700232D8B /* SearchView.swift */,
 				241A58272C8C819F00232D8B /* FavoriteView.swift */,
@@ -161,6 +164,14 @@
 				241A58472C8D628700232D8B /* Coin+.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		241A58492C8D844600232D8B /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				241A584A2C8D844E00232D8B /* CircleImageView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 				241A58312C8C992A00232D8B /* Search.swift in Sources */,
 				241A58282C8C819F00232D8B /* FavoriteView.swift in Sources */,
 				241A58242C8C816D00232D8B /* TrendingView.swift in Sources */,
+				241A584B2C8D844E00232D8B /* CircleImageView.swift in Sources */,
 				241A58462C8D604600232D8B /* LikedCoin.swift in Sources */,
 				241A58352C8D58A900232D8B /* CoingeckoAPIManager.swift in Sources */,
 			);
