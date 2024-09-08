@@ -54,10 +54,9 @@ struct NFTItem: Hashable, Identifiable {
 
 struct TrendingView: View {
     
-    // TODO: - 즐겨찾기 -> Realm -> ids -> Market 통신 -> data 세팅
-    
     private let rows = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
+    @State private var marketList = [Market]()
     @State private var coinList = [CoinItem]()
     @State private var nftList = [NFTItem]()
     
@@ -71,6 +70,16 @@ struct TrendingView: View {
             .navigationTitle("Crypto Coin")
         }
         .task {
+            let ids = RealmRepository.shared.fetchAll().map { $0.id }
+            if ids.isEmpty { return }
+            print(ids)
+            CoingeckoAPIManager.shared.fetchMarket(
+                ids: ids,
+                sparkLine: false
+            ) { result in
+                marketList = result
+            }
+            
             CoingeckoAPIManager.shared.fetchTrending { trending in
                 coinList = trending.coins.map {
                     let item = $0.item
@@ -104,8 +113,8 @@ struct TrendingView: View {
                 .bold()
             ScrollView(.horizontal) {
                 LazyHStack {
-                    ForEach(0..<5) { item in
-                        favoriteCell()
+                    ForEach(marketList, id: \.id) { item in
+                        favoriteCell(item)
                     }
                 }
             }
@@ -115,7 +124,7 @@ struct TrendingView: View {
         .padding()
     }
     
-    func favoriteCell() -> some View {
+    func favoriteCell(_ item: Market) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(.gray.opacity(0.2))
@@ -123,14 +132,11 @@ struct TrendingView: View {
             
             VStack {
                 HStack {
-                    Image(systemName: "star")
-                        .frame(width: 50, height: 50)
-                        .background(.orange)
-                        .clipShape(Circle())
+                    CircleImageView(url: item.image)
                     VStack {
-                        Text("Bitcoin")
+                        Text(item.name)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("BTC")
+                        Text(item.symbol)
                             .foregroundStyle(.gray)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -138,11 +144,17 @@ struct TrendingView: View {
                 
                 Spacer()
                 VStack {
-                    Text("$13,235,425")
+                    Text(item.priceFormatted)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("+0.64%")
-                        .foregroundStyle(.red)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if item.priceChangePercentage24H >= 0 {
+                        Text("+\(item.priceChangeFormatted)")
+                            .foregroundStyle(.red)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    } else {
+                        Text("\(item.priceChangeFormatted)")
+                            .foregroundStyle(.blue)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
                 .bold()
             }

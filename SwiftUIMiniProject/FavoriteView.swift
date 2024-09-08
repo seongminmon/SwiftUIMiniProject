@@ -11,7 +11,6 @@ struct FavoriteView: View {
     
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
-    @State private var likeList = [LikedCoin]()
     @State private var marketList = [Market]()
     
     var body: some View {
@@ -27,8 +26,7 @@ struct FavoriteView: View {
             .navigationTitle("Favorite Coin")
         }
         .task {
-            likeList = RealmRepository.shared.fetchAll()
-            let ids = likeList.map { $0.id }
+            let ids = RealmRepository.shared.fetchAll().map { $0.id }
             if ids.isEmpty { return }
             CoingeckoAPIManager.shared.fetchMarket(
                 ids: ids,
