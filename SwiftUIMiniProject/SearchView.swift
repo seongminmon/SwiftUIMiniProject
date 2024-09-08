@@ -12,13 +12,17 @@ struct SearchItem: Hashable {
     var name: String
     var symbol: String
     var thumb: String?
-    var like = false
 }
 
 struct SearchView: View {
     
+    // TODO: - 좋아요 뷰와 연동하기
     @State private var searchList = [SearchItem]()
     @State private var text = ""
+    
+    func like(_ id: String) -> Bool {
+        return RealmRepository.shared.fetchItem(id) != nil
+    }
     
     var body: some View {
         NavigationView {
@@ -35,6 +39,15 @@ struct SearchView: View {
                 .padding()
             }
             .navigationTitle("Search")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        ProfileImageView()
+                    }
+                }
+            }
             .searchable(
                 text: $text,
                 placement: .navigationBarDrawer,
@@ -47,8 +60,7 @@ struct SearchView: View {
                             id: item.id,
                             name: item.name,
                             symbol: item.symbol,
-                            thumb: item.thumb,
-                            like: RealmRepository.shared.fetchItem(item.id) != nil
+                            thumb: item.thumb
                         )
                     }
                 }
@@ -67,14 +79,13 @@ struct SearchView: View {
             }
             Spacer()
             Button {
-                if item.like.wrappedValue {
+                if like(item.id.wrappedValue) {
                     RealmRepository.shared.deleteItem(item.id.wrappedValue)
                 } else {
                     RealmRepository.shared.addItem(LikedCoin(id: item.id.wrappedValue))
                 }
-                item.like.wrappedValue.toggle()
             } label: {
-                Image(systemName: item.like.wrappedValue ? "star.fill" : "star")
+                Image(systemName: like(item.id.wrappedValue) ? "star.fill" : "star")
             }
             .foregroundStyle(.purple)
         }

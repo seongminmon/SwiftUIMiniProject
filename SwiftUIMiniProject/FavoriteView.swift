@@ -28,6 +28,15 @@ struct FavoriteView: View {
                 .padding()
             }
             .navigationTitle("Favorite Coin")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        ProfileImageView()
+                    }
+                }
+            }
         }
         .task {
             let ids = RealmRepository.shared.fetchAll().map { $0.id }

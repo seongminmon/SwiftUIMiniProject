@@ -33,6 +33,7 @@
 		241A584D2C8DD77100232D8B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A584C2C8DD77100232D8B /* String+.swift */; };
 		241A584F2C8DDC9900232D8B /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A584E2C8DDC9900232D8B /* Text+.swift */; };
 		241A58522C8DDD6700232D8B /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58512C8DDD6700232D8B /* Formatter.swift */; };
+		241A58542C8DE2F600232D8B /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58532C8DE2F600232D8B /* ProfileImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +75,7 @@
 		241A584C2C8DD77100232D8B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		241A584E2C8DDC9900232D8B /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
 		241A58512C8DDD6700232D8B /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		241A58532C8DE2F600232D8B /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				241A584A2C8D844E00232D8B /* CircleImageView.swift */,
+				241A58532C8DE2F600232D8B /* ProfileImageView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				241A584D2C8DD77100232D8B /* String+.swift in Sources */,
 				241A58482C8D628700232D8B /* Coin+.swift in Sources */,
 				241A58312C8C992A00232D8B /* Search.swift in Sources */,
+				241A58542C8DE2F600232D8B /* ProfileImageView.swift in Sources */,
 				241A58282C8C819F00232D8B /* FavoriteView.swift in Sources */,
 				241A58242C8C816D00232D8B /* TrendingView.swift in Sources */,
 				241A584B2C8D844E00232D8B /* CircleImageView.swift in Sources */,

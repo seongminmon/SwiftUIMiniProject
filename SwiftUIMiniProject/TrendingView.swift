@@ -68,6 +68,15 @@ struct TrendingView: View {
                 top7NFTSection()
             }
             .navigationTitle("Crypto Coin")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        ProfileImageView()
+                    }
+                }
+            }
         }
         .task {
             let ids = RealmRepository.shared.fetchAll().map { $0.id }
