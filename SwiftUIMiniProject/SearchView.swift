@@ -12,3 +12,7 @@ struct SearchView: View {
         Text("SearchView")
     }
 }
+
+//#Preview {
+//    SearchView()
+//}

@@ -18,6 +18,11 @@
 		241A58282C8C819F00232D8B /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58272C8C819F00232D8B /* FavoriteView.swift */; };
 		241A582A2C8C81A600232D8B /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58292C8C81A600232D8B /* ChartView.swift */; };
 		241A582C2C8C829C00232D8B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A582B2C8C829C00232D8B /* ProfileView.swift */; };
+		241A582E2C8C875700232D8B /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A582D2C8C875700232D8B /* Trending.swift */; };
+		241A58312C8C992A00232D8B /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58302C8C992A00232D8B /* Search.swift */; };
+		241A58332C8C9A5000232D8B /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58322C8C9A5000232D8B /* Market.swift */; };
+		241A58352C8D58A900232D8B /* CoingeckoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58342C8D58A900232D8B /* CoingeckoAPIManager.swift */; };
+		241A58392C8D5A6200232D8B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 241A58382C8D5A6200232D8B /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,10 @@
 		241A58272C8C819F00232D8B /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		241A58292C8C81A600232D8B /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		241A582B2C8C829C00232D8B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		241A582D2C8C875700232D8B /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
+		241A58302C8C992A00232D8B /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		241A58322C8C9A5000232D8B /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		241A58342C8D58A900232D8B /* CoingeckoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoingeckoAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				241A58392C8D5A6200232D8B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				241A58212C8C80BE00232D8B /* APIKey.swift */,
+				241A58362C8D58FC00232D8B /* Network */,
+				241A582F2C8C992400232D8B /* Model */,
 				241A58112C8C808B00232D8B /* SwiftUIMiniProjectApp.swift */,
 				241A58132C8C808B00232D8B /* ContentView.swift */,
 				241A58232C8C816D00232D8B /* TrendingView.swift */,
@@ -88,6 +100,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		241A582F2C8C992400232D8B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				241A582D2C8C875700232D8B /* Trending.swift */,
+				241A58302C8C992A00232D8B /* Search.swift */,
+				241A58322C8C9A5000232D8B /* Market.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		241A58362C8D58FC00232D8B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				241A58342C8D58A900232D8B /* CoingeckoAPIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,6 +134,9 @@
 			dependencies = (
 			);
 			name = SwiftUIMiniProject;
+			packageProductDependencies = (
+				241A58382C8D5A6200232D8B /* Kingfisher */,
+			);
 			productName = SwiftUIMiniProject;
 			productReference = 241A580E2C8C808B00232D8B /* SwiftUIMiniProject.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +165,9 @@
 				Base,
 			);
 			mainGroup = 241A58052C8C808B00232D8B;
+			packageReferences = (
+				241A58372C8D5A6200232D8B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 241A580F2C8C808B00232D8B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -160,13 +196,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				241A582C2C8C829C00232D8B /* ProfileView.swift in Sources */,
+				241A58332C8C9A5000232D8B /* Market.swift in Sources */,
 				241A58262C8C818700232D8B /* SearchView.swift in Sources */,
 				241A58142C8C808B00232D8B /* ContentView.swift in Sources */,
+				241A582E2C8C875700232D8B /* Trending.swift in Sources */,
 				241A58222C8C80BE00232D8B /* APIKey.swift in Sources */,
 				241A582A2C8C81A600232D8B /* ChartView.swift in Sources */,
 				241A58122C8C808B00232D8B /* SwiftUIMiniProjectApp.swift in Sources */,
+				241A58312C8C992A00232D8B /* Search.swift in Sources */,
 				241A58282C8C819F00232D8B /* FavoriteView.swift in Sources */,
 				241A58242C8C816D00232D8B /* TrendingView.swift in Sources */,
+				241A58352C8D58A900232D8B /* CoingeckoAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +422,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		241A58372C8D5A6200232D8B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		241A58382C8D5A6200232D8B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 241A58372C8D5A6200232D8B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 241A58062C8C808B00232D8B /* Project object */;
 }

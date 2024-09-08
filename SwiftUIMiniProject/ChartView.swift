@@ -13,6 +13,6 @@ struct ChartView: View {
     }
 }
 
-#Preview {
-    ChartView()
-}
+//#Preview {
+//    ChartView()
+//}
