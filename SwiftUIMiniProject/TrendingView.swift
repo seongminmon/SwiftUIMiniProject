@@ -34,42 +34,32 @@ struct CoinItem: Hashable {
     }
 }
 
-//struct NFTItem: Hashable, Identifiable {
-//    let id = UUID()
-//    let name: String
-//    let symbol: String
-//    let thumb: String?
-//    let price: Double?
-//    let priceChange: Double?
-//    
-//    var priceFormatted: String {
-//        if let price {
-//            let formatted = String(format: "%.2f", price)
-//            return "₩\(formatted)"
-//        } else {
-//            return "n\\a"
-//        }
-//    }
-//    
-//    var priceChangeFormatted: String {
-//        if let priceChange {
-//            let formatted = String(format: "%.2f", priceChange)
-//            return "\(formatted)%"
-//        } else {
-//            return "n\\a"
-//        }
-//    }
-//}
+struct NFTItem: Hashable, Identifiable {
+    let id = UUID()
+    let name: String
+    let symbol: String
+    let thumb: String?
+    let price: String?
+    let priceChange: Double?
+    
+    var priceChangeFormatted: String {
+        if let priceChange {
+            let formatted = String(format: "%.2f", priceChange)
+            return "\(formatted)%"
+        } else {
+            return "n\\a"
+        }
+    }
+}
 
 struct TrendingView: View {
     
     // TODO: - 즐겨찾기 -> Realm -> ids -> Market 통신 -> data 세팅
-    // TODO: - Trending -> coinList / nftList
     
-    let rows = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    private let rows = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     @State private var coinList = [CoinItem]()
-//    @State private var nftList = [NFTItem]()
+    @State private var nftList = [NFTItem]()
     
     var body: some View {
         NavigationView {
@@ -93,6 +83,17 @@ struct TrendingView: View {
                         priceChange: item.data?.priceChangePercentage24H["krw"]
                     )
                 }
+                
+                nftList = trending.nfts.map {
+                    return NFTItem(
+                        name: $0.name,
+                        symbol: $0.symbol,
+                        thumb: $0.thumb,
+                        price: $0.data.floorPrice,
+                        priceChange: Double($0.data.floorPriceInUsd24HPercentageChange)
+                    )
+                }
+                dump(nftList)
             }
         }
     }
@@ -226,13 +227,9 @@ struct TrendingView: View {
                 .bold()
             
             ScrollView(.horizontal) {
-                LazyHStack {
-                    ForEach(0..<5) { i in
-                        VStack {
-                            ForEach(0..<3) { j in
-                                nftCell()
-                            }
-                        }
+                LazyHGrid(rows: rows) {
+                    ForEach(Array(zip(nftList.indices, nftList)), id: \.0) { index, item in
+                        nftCell(index, item)
                     }
                 }
             }
@@ -242,28 +239,43 @@ struct TrendingView: View {
         .padding()
     }
     
-    func nftCell() -> some View {
+    func nftCell(_ index: Int, _ item: NFTItem) -> some View {
         VStack {
             HStack {
-                Text("\(1)")
+                Text("\(index + 1)")
                     .font(.title2)
                     .bold()
-                Image(systemName: "star")
-                    .frame(width: 50, height: 50)
-                    .background(.orange)
-                    .clipShape(Circle())
+                AsyncImage(url: URL(string: item.thumb ?? "")) { data in
+                    switch data {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image
+                    case .failure(_):
+                        Image(systemName: "star")
+                    @unknown default:
+                        Image(systemName: "star")
+                    }
+                }
+                .frame(width: 50, height: 50)
+                .clipShape(Circle())
                 VStack(alignment: .leading) {
-                    Text("Solana")
+                    Text(item.name)
                         .bold()
-                    Text("LTC")
+                    Text(item.symbol)
                 }
                 Spacer()
                 
                 VStack(alignment: .trailing) {
-                    Text("$0.4135")
+                    Text(item.price ?? "n/a")
                         .bold()
-                    Text("+21.18%")
-                        .foregroundStyle(.red)
+                    if let change = item.priceChange, change >= 0 {
+                        Text("+\(item.priceChangeFormatted)")
+                            .foregroundStyle(.red)
+                    } else {
+                        Text("\(item.priceChangeFormatted)")
+                            .foregroundStyle(.blue)
+                    }
                 }
             }
             
