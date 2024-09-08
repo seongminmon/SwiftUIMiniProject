@@ -12,10 +12,10 @@ struct SwiftUIMiniProjectApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-//                .task {
-//                    print(RealmRepository.shared.fileURL!)
-//                    print(RealmRepository.shared.schemaVersion!)
-//                }
+                .task {
+                    print(RealmRepository.shared.fileURL!)
+                    print(RealmRepository.shared.schemaVersion!)
+                }
         }
     }
 }

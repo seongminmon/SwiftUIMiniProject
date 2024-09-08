@@ -11,21 +11,35 @@ struct FavoriteView: View {
     
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
+    @State private var likeList = [LikedCoin]()
+    @State private var marketList = [Market]()
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns) {
-                    ForEach(0..<5) { item in
-                        favoriteCell()
+                    ForEach(marketList, id: \.id) { item in
+                        favoriteCell(item)
                     }
                 }
                 .padding()
             }
             .navigationTitle("Favorite Coin")
         }
+        .task {
+            likeList = RealmRepository.shared.fetchAll()
+            let ids = likeList.map { $0.id }
+            if ids.isEmpty { return }
+            CoingeckoAPIManager.shared.fetchMarket(
+                ids: ids,
+                sparkLine: false
+            ) { result in
+                marketList = result
+            }
+        }
     }
     
-    func favoriteCell() -> some View {
+    func favoriteCell(_ item: Market) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(.white)
@@ -33,14 +47,11 @@ struct FavoriteView: View {
             
             VStack {
                 HStack {
-                    Image(systemName: "star")
-                        .frame(width: 50, height: 50)
-                        .background(.orange)
-                        .clipShape(Circle())
+                    CircleImageView(url: item.image)
                     VStack {
-                        Text("Bitcoin")
+                        Text(item.name)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("BTC")
+                        Text(item.symbol)
                             .font(.caption)
                             .foregroundStyle(.gray)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -48,10 +59,10 @@ struct FavoriteView: View {
                 }
                 Spacer(minLength: 40)
                 VStack {
-                    Text("$13,235,425")
+                    Text(item.priceFormatted)
                         .font(.title3)
                         .frame(maxWidth: .infinity, alignment: .trailing)
-                    Text("+0.64%")
+                    Text(item.priceChangeFormatted)
                         .foregroundStyle(.red)
                         .padding(8)
                         .background(
@@ -68,6 +79,6 @@ struct FavoriteView: View {
     }
 }
 
-#Preview {
-    FavoriteView()
-}
+//#Preview {
+//    FavoriteView()
+//}

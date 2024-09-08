@@ -66,8 +66,7 @@ struct SearchView: View {
                 if item.like.wrappedValue {
                     RealmRepository.shared.deleteItem(item.id.wrappedValue)
                 } else {
-                    let likedCoin = LikedCoin(id: item.id.wrappedValue)
-                    RealmRepository.shared.addItem(likedCoin)
+                    RealmRepository.shared.addItem(LikedCoin(id: item.id.wrappedValue))
                 }
                 item.like.wrappedValue.toggle()
             } label: {
