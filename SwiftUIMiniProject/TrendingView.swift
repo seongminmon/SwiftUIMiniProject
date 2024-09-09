@@ -68,13 +68,13 @@ struct TrendingView: View {
                 top7NFTSection()
             }
             .navigationTitle("Crypto Coin")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        ProfileView()
-                    } label: {
-                        ProfileImageView()
-                    }
+            .navigationBar() {
+                EmptyView()
+            } trailing: {
+                NavigationLink {
+                    ProfileView()
+                } label: {
+                    ProfileImageView()
                 }
             }
         }

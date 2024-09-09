@@ -28,9 +28,9 @@ struct SearchView: View {
         NavigationView {
             ScrollView {
                 LazyVStack(spacing: 20) {
-                    ForEach($searchList, id: \.id) { item in
+                    ForEach(searchList, id: \.id) { item in
                         NavigationLink {
-                            ChartView(id: item.id.wrappedValue)
+                            ChartView(id: item.id)
                         } label: {
                             searchCell(item)
                         }
@@ -39,13 +39,13 @@ struct SearchView: View {
                 .padding()
             }
             .navigationTitle("Search")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        ProfileView()
-                    } label: {
-                        ProfileImageView()
-                    }
+            .navigationBar() {
+                EmptyView()
+            } trailing: {
+                NavigationLink {
+                    ProfileView()
+                } label: {
+                    ProfileImageView()
                 }
             }
             .searchable(
@@ -68,24 +68,24 @@ struct SearchView: View {
         }
     }
     
-    func searchCell(_ item: Binding<SearchItem>) -> some View {
+    func searchCell(_ item: SearchItem) -> some View {
         HStack {
-            CircleImageView(url: item.thumb.wrappedValue)
+            CircleImageView(url: item.thumb)
             VStack(alignment: .leading) {
-                Text(item.name.wrappedValue, highlight: text, color: .purple)
+                Text(item.name, highlight: text, color: .purple)
                     .bold()
-                Text(item.symbol.wrappedValue)
+                Text(item.symbol)
                     .foregroundStyle(.gray)
             }
             Spacer()
             Button {
-                if like(item.id.wrappedValue) {
-                    RealmRepository.shared.deleteItem(item.id.wrappedValue)
+                if like(item.id) {
+                    RealmRepository.shared.deleteItem(item.id)
                 } else {
-                    RealmRepository.shared.addItem(LikedCoin(id: item.id.wrappedValue))
+                    RealmRepository.shared.addItem(LikedCoin(id: item.id))
                 }
             } label: {
-                Image(systemName: like(item.id.wrappedValue) ? "star.fill" : "star")
+                Image(systemName: like(item.id) ? "star.fill" : "star")
             }
             .foregroundStyle(.purple)
         }

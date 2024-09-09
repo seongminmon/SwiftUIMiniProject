@@ -28,13 +28,13 @@ struct FavoriteView: View {
                 .padding()
             }
             .navigationTitle("Favorite Coin")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        ProfileView()
-                    } label: {
-                        ProfileImageView()
-                    }
+            .navigationBar() {
+                EmptyView()
+            } trailing: {
+                NavigationLink {
+                    ProfileView()
+                } label: {
+                    ProfileImageView()
                 }
             }
         }

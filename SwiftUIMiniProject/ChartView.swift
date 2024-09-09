@@ -11,6 +11,7 @@ import Charts
 struct ChartView: View {
     
     // TODO: - 좋아요 뷰와 연동하기
+    // TODO: - Realm에 데이터 추가 / 삭제를 하더라도 @State가 아니기 때문에 뷰가 렌더링 되지 않음
     
     let id: String
     @State private var market = Market(id: "", name: "", symbol: "", image: "", currentPrice: 0, priceChangePercentage24H: 0, low24H: 0, high24H: 0, ath: 0, athDate: "", atl: 0, atlDate: "", lastUpdated: "", sparklineIn7d: nil)
@@ -19,9 +20,7 @@ struct ChartView: View {
         return RealmRepository.shared.fetchItem(id) != nil
     }
     
-    private var areaBackground: Gradient {
-        return Gradient(colors: [Color.purple.opacity(0.8), Color.purple.opacity(0.1)])
-    }
+    private let areaBackground = Gradient(colors: [.purple.opacity(0.8), .purple.opacity(0.1)])
     
     var body: some View {
         ScrollView() {
@@ -37,18 +36,18 @@ struct ChartView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    if like {
-                        RealmRepository.shared.deleteItem(id)
-                    } else {
-                        RealmRepository.shared.addItem(LikedCoin(id: id))
-                    }
-                } label: {
-                    Image(systemName: like ? "star.fill" : "star")
-                        .foregroundStyle(.purple)
+        .navigationBar() {
+            EmptyView()
+        } trailing: {
+            Button {
+                if like {
+                    RealmRepository.shared.deleteItem(id)
+                } else {
+                    RealmRepository.shared.addItem(LikedCoin(id: id))
                 }
+            } label: {
+                Image(systemName: like ? "star.fill" : "star")
+                    .foregroundStyle(.purple)
             }
         }
         .task {
