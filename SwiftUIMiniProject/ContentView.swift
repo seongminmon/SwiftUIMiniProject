@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject private var manager = LikeListManager()
+    
     var body: some View {
         TabView {
             TrendingView()
@@ -16,26 +18,33 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
                 }
+                .environmentObject(manager)
             
             SearchView()
                 .foregroundStyle(.black)
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
+                .environmentObject(manager)
             
             FavoriteView()
                 .foregroundStyle(.black)
                 .tabItem {
                     Image(systemName: "creditcard")
                 }
+                .environmentObject(manager)
             
             ProfileView()
                 .foregroundStyle(.black)
                 .tabItem {
                     Image(systemName: "person")
                 }
+                .environmentObject(manager)
         }
         .accentColor(.purple)
+        .onAppear {
+            print(manager.likeList)
+        }
     }
 }
 

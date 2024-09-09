@@ -14,10 +14,11 @@ struct ChartView: View {
     // TODO: - Realm에 데이터 추가 / 삭제를 하더라도 @State가 아니기 때문에 뷰가 렌더링 되지 않음
     
     let id: String
+    @EnvironmentObject var manager: LikeListManager
     @State private var market = Market(id: "", name: "", symbol: "", image: "", currentPrice: 0, priceChangePercentage24H: 0, low24H: 0, high24H: 0, ath: 0, athDate: "", atl: 0, atlDate: "", lastUpdated: "", sparklineIn7d: nil)
     
     var like: Bool {
-        return RealmRepository.shared.fetchItem(id) != nil
+        return manager.likeList.contains(id)
     }
     
     private let areaBackground = Gradient(colors: [.purple.opacity(0.8), .purple.opacity(0.1)])
@@ -41,9 +42,9 @@ struct ChartView: View {
         } trailing: {
             Button {
                 if like {
-                    RealmRepository.shared.deleteItem(id)
+                    manager.removeItem(id: id)
                 } else {
-                    RealmRepository.shared.addItem(LikedCoin(id: id))
+                    manager.addItem(id)
                 }
             } label: {
                 Image(systemName: like ? "star.fill" : "star")

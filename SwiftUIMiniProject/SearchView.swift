@@ -16,12 +16,12 @@ struct SearchItem: Hashable {
 
 struct SearchView: View {
     
-    // TODO: - 좋아요 뷰와 연동하기
+    @EnvironmentObject var manager: LikeListManager
     @State private var searchList = [SearchItem]()
     @State private var text = ""
     
     func like(_ id: String) -> Bool {
-        return RealmRepository.shared.fetchItem(id) != nil
+        return manager.likeList.contains(id)
     }
     
     var body: some View {
@@ -80,9 +80,9 @@ struct SearchView: View {
             Spacer()
             Button {
                 if like(item.id) {
-                    RealmRepository.shared.deleteItem(item.id)
+                    manager.removeItem(id: item.id)
                 } else {
-                    RealmRepository.shared.addItem(LikedCoin(id: item.id))
+                    manager.addItem(item.id)
                 }
             } label: {
                 Image(systemName: like(item.id) ? "star.fill" : "star")

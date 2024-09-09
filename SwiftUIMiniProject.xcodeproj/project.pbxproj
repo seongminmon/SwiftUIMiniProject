@@ -22,12 +22,8 @@
 		241A58312C8C992A00232D8B /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58302C8C992A00232D8B /* Search.swift */; };
 		241A58332C8C9A5000232D8B /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58322C8C9A5000232D8B /* Market.swift */; };
 		241A58352C8D58A900232D8B /* CoingeckoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58342C8D58A900232D8B /* CoingeckoAPIManager.swift */; };
-		241A583C2C8D5F3300232D8B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 241A583B2C8D5F3300232D8B /* RealmSwift */; };
-		241A583D2C8D5F4800232D8B /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 241A583B2C8D5F3300232D8B /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		241A58412C8D5FA700232D8B /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58402C8D5FA700232D8B /* RealmRepository.swift */; };
+		241A58412C8D5FA700232D8B /* LikeListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58402C8D5FA700232D8B /* LikeListManager.swift */; };
 		241A58442C8D5FD000232D8B /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58432C8D5FD000232D8B /* View+.swift */; };
-		241A58462C8D604600232D8B /* LikedCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58452C8D604600232D8B /* LikedCoin.swift */; };
-		241A58482C8D628700232D8B /* Coin+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A58472C8D628700232D8B /* Coin+.swift */; };
 		241A584B2C8D844E00232D8B /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A584A2C8D844E00232D8B /* CircleImageView.swift */; };
 		241A584D2C8DD77100232D8B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A584C2C8DD77100232D8B /* String+.swift */; };
 		241A584F2C8DDC9900232D8B /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A584E2C8DDC9900232D8B /* Text+.swift */; };
@@ -43,7 +39,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				241A583D2C8D5F4800232D8B /* RealmSwift in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,10 +62,8 @@
 		241A58302C8C992A00232D8B /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		241A58322C8C9A5000232D8B /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		241A58342C8D58A900232D8B /* CoingeckoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoingeckoAPIManager.swift; sourceTree = "<group>"; };
-		241A58402C8D5FA700232D8B /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		241A58402C8D5FA700232D8B /* LikeListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeListManager.swift; sourceTree = "<group>"; };
 		241A58432C8D5FD000232D8B /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
-		241A58452C8D604600232D8B /* LikedCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCoin.swift; sourceTree = "<group>"; };
-		241A58472C8D628700232D8B /* Coin+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+.swift"; sourceTree = "<group>"; };
 		241A584A2C8D844E00232D8B /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		241A584C2C8DD77100232D8B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		241A584E2C8DDC9900232D8B /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
@@ -84,7 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				241A583C2C8D5F3300232D8B /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +108,7 @@
 				241A58502C8DDD5D00232D8B /* Enum */,
 				241A585C2C8EF3B400232D8B /* Wrapper */,
 				241A58422C8D5FC700232D8B /* Extension */,
-				241A583F2C8D5F9800232D8B /* Realm */,
+				241A583F2C8D5F9800232D8B /* Manager */,
 				241A58362C8D58FC00232D8B /* Network */,
 				241A582F2C8C992400232D8B /* Model */,
 				241A58492C8D844600232D8B /* CustomView */,
@@ -158,13 +150,12 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		241A583F2C8D5F9800232D8B /* Realm */ = {
+		241A583F2C8D5F9800232D8B /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				241A58402C8D5FA700232D8B /* RealmRepository.swift */,
-				241A58452C8D604600232D8B /* LikedCoin.swift */,
+				241A58402C8D5FA700232D8B /* LikeListManager.swift */,
 			);
-			path = Realm;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		241A58422C8D5FC700232D8B /* Extension */ = {
@@ -173,7 +164,6 @@
 				241A58432C8D5FD000232D8B /* View+.swift */,
 				241A584E2C8DDC9900232D8B /* Text+.swift */,
 				241A584C2C8DD77100232D8B /* String+.swift */,
-				241A58472C8D628700232D8B /* Coin+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -221,7 +211,6 @@
 			);
 			name = SwiftUIMiniProject;
 			packageProductDependencies = (
-				241A583B2C8D5F3300232D8B /* RealmSwift */,
 			);
 			productName = SwiftUIMiniProject;
 			productReference = 241A580E2C8C808B00232D8B /* SwiftUIMiniProject.app */;
@@ -252,7 +241,6 @@
 			);
 			mainGroup = 241A58052C8C808B00232D8B;
 			packageReferences = (
-				241A583A2C8D5F3300232D8B /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 241A580F2C8C808B00232D8B /* Products */;
 			projectDirPath = "";
@@ -292,16 +280,14 @@
 				241A58222C8C80BE00232D8B /* APIKey.swift in Sources */,
 				241A582A2C8C81A600232D8B /* ChartView.swift in Sources */,
 				241A58122C8C808B00232D8B /* SwiftUIMiniProjectApp.swift in Sources */,
-				241A58412C8D5FA700232D8B /* RealmRepository.swift in Sources */,
+				241A58412C8D5FA700232D8B /* LikeListManager.swift in Sources */,
 				241A584D2C8DD77100232D8B /* String+.swift in Sources */,
 				241A585E2C8EF3C600232D8B /* NavigationBarWrapper.swift in Sources */,
-				241A58482C8D628700232D8B /* Coin+.swift in Sources */,
 				241A58312C8C992A00232D8B /* Search.swift in Sources */,
 				241A58542C8DE2F600232D8B /* ProfileImageView.swift in Sources */,
 				241A58282C8C819F00232D8B /* FavoriteView.swift in Sources */,
 				241A58242C8C816D00232D8B /* TrendingView.swift in Sources */,
 				241A584B2C8D844E00232D8B /* CircleImageView.swift in Sources */,
-				241A58462C8D604600232D8B /* LikedCoin.swift in Sources */,
 				241A58352C8D58A900232D8B /* CoingeckoAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,25 +504,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		241A583A2C8D5F3300232D8B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = exactVersion;
-				version = 10.52.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		241A583B2C8D5F3300232D8B /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 241A583A2C8D5F3300232D8B /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 241A58062C8C808B00232D8B /* Project object */;
 }

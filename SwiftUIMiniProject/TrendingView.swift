@@ -56,6 +56,7 @@ struct TrendingView: View {
     
     private let rows = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
+    @EnvironmentObject var manager: LikeListManager
     @State private var marketList = [Market]()
     @State private var coinList = [CoinItem]()
     @State private var nftList = [NFTItem]()
@@ -78,17 +79,21 @@ struct TrendingView: View {
                 }
             }
         }
-        .task {
-            let ids = RealmRepository.shared.fetchAll().map { $0.id }
-            if ids.isEmpty { return }
-            print(ids)
-            CoingeckoAPIManager.shared.fetchMarket(
-                ids: ids,
-                sparkLine: false
-            ) { result in
-                marketList = result
+        .onAppear {
+            print("Trending onAppear")
+            let ids = manager.likeList
+            if ids.isEmpty {
+                marketList = []
+            } else {
+                CoingeckoAPIManager.shared.fetchMarket(
+                    ids: ids,
+                    sparkLine: false
+                ) { result in
+                    marketList = result
+                }
             }
-            
+        }
+        .task {
             CoingeckoAPIManager.shared.fetchTrending { trending in
                 coinList = trending.coins.map {
                     let item = $0.item

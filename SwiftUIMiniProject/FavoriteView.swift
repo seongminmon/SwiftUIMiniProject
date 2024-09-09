@@ -11,6 +11,7 @@ struct FavoriteView: View {
     
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
+    @EnvironmentObject var manager: LikeListManager
     @State private var marketList = [Market]()
     
     var body: some View {
@@ -38,14 +39,18 @@ struct FavoriteView: View {
                 }
             }
         }
-        .task {
-            let ids = RealmRepository.shared.fetchAll().map { $0.id }
-            if ids.isEmpty { return }
-            CoingeckoAPIManager.shared.fetchMarket(
-                ids: ids,
-                sparkLine: false
-            ) { result in
-                marketList = result
+        .onAppear {
+            print("FavoriteView onAppear")
+            let ids = manager.likeList
+            if ids.isEmpty {
+                marketList = []
+            } else {
+                CoingeckoAPIManager.shared.fetchMarket(
+                    ids: ids,
+                    sparkLine: false
+                ) { result in
+                    marketList = result
+                }
             }
         }
     }
