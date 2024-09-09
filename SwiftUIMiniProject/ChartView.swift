@@ -120,7 +120,7 @@ struct ChartView: View {
     
     func chart(_ data: [Double]) -> some View {
         Chart {
-            ForEach(Array(zip(data.indices, data)), id: \.0) { index, item in
+            ForEach(Array(data.enumerated()), id: \.element) { index, item in
                 LineMark(
                     x: .value("Date", index),
                     y: .value("Price", item)
