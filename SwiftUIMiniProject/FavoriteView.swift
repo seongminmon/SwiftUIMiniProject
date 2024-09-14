@@ -40,6 +40,7 @@ struct FavoriteView: View {
             }
         }
         .onAppear {
+            // TODO: - 차트뷰에서 돌아올 때 업데이트 안 되는 문제
             print("FavoriteView onAppear")
             let ids = manager.likeList
             if ids.isEmpty {
